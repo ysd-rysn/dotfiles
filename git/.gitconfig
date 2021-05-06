@@ -1,0 +1,7 @@
+[user]
+	name = ysd-rysn
+	email = 81076133+ysd-rysn@users.noreply.github.com
+[init]
+	defaultBranch = main
+[core]
+	editor = vim -c \"set fenc=utf-8\"
