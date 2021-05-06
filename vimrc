@@ -1,0 +1,37 @@
+" Indentation Options
+set autoindent
+set shiftwidth=4
+set smarttab
+set tabstop=4
+
+" Search Options
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+
+" Text Rendering Options
+syntax enable
+
+" User Interface Options
+set title
+set number
+set cursorline
+
+" Miscellaneous Options
+set history=1000
+set spell spelllang=en_us
+set shell
+
+" Mapping Options
+inoremap <silent> jj <ESC>
+" Auto closing
+inoremap (<CR> (<CR>)<C-c>O<Tab>
+inoremap (( ()<Left>
+inoremap {<CR> {<CR>}<C-c>O<Tab>
+inoremap {{ {}<Left>
+inoremap < <><Left>
+inoremap [ []<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap ` ``<Left>
