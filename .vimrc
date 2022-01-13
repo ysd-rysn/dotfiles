@@ -30,6 +30,7 @@ set shell
 set clipboard+=unnamed
 
 " Mapping Options
+let mapleader = "\<space>"
 inoremap <silent> jj <ESC>
 " Auto closing
 inoremap (<CR> (<CR>)<C-c>O<Tab>
@@ -79,3 +80,41 @@ call plug#end()
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='angr'
+
+" vim-lsp
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> <leader>ca <plug>(lsp-code-action)
+    nmap <buffer> <leader>cl <plug>(lsp-code-lens)
+    nmap <buffer> <leader>gdf <plug>(lsp-definition)
+    nmap <buffer> <leader>gdc <plug>(lsp-declaration)
+    nmap <buffer> <leader>gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> <leader>gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> <leader>gr <plug>(lsp-references)
+    nmap <buffer> <leader>gi <plug>(lsp-implementation)
+    nmap <buffer> <leader>gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> <leader>gp <plug>(lsp-previous-diagnostic)
+    nmap <buffer> <leader>gn <plug>(lsp-next-diagnostic)
+    nmap <buffer> <leader>ep <plug>(lsp-previous-error)
+    nmap <buffer> <leader>en <plug>(lsp-next-error)
+    nmap <buffer> <leader>K <plug>(lsp-hover)
+    nmap <buffer> <leader>pdf <plug>(lsp-peek-definition)
+    nmap <buffer> <leader>pdc <plug>(lsp-peek-declaration)
+    nmap <buffer> <leader>pi <plug>(lsp-peek-implementation)
+    nmap <buffer> <leader>pt <plug>(lsp-peek-type-definition)
+    nnoremap <buffer> <expr><C-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><C-b> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 500
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
