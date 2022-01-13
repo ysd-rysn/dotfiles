@@ -8,5 +8,7 @@
 !/oh-my-posh/
 !/oh-my-posh/theme/
 !/oh-my-posh/theme/**
+!/AutoHotkey/
+!/AutoHotkey/**
 
 !.gitignore
