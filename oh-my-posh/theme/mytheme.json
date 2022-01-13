@@ -141,6 +141,18 @@
             "root_icon": ""
           }
         },
+		{
+		  "type": "executiontime",
+		  "style": "powerline",
+		  "powerline_symbol": "\uE0B0",
+		  "foreground": "#ffffff",
+		  "background": "#8800dd",
+		  "properties": {
+			"threshold": 500,
+			"style": "austin",
+			"prefix": " <#fefefe>\ufbab</> "
+		  }
+		},
         {
           "type": "exit",
           "style": "diamond",
@@ -153,7 +165,7 @@
             "always_enabled": true,
             "error_color": "#f1184c",
             "color_background": true,
-            "prefix": "<#83769c></> "
+            "prefix": "<#83769c></> $"
           }
         }
       ]
