@@ -1,0 +1,10 @@
+# ignore
+/*
+/**
+
+# not ignore
+!/.vimrc
+!/.gitconfig
+!/oh-my-posh/
+
+!.gitignore
