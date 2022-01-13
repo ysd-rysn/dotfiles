@@ -26,6 +26,8 @@ set history=1000
 set spell spelllang=en_us
 hi clear SpellBad
 hi SpellBad cterm=underline
+hi clear SpellCap
+hi SpellCap cterm=underline
 set shell
 set clipboard+=unnamed
 
@@ -33,9 +35,9 @@ set clipboard+=unnamed
 let mapleader = "\<space>"
 inoremap <silent> jj <ESC>
 " Auto closing
-inoremap (<CR> (<CR>)<C-c>O<Tab>
+inoremap (<CR> (<CR>)<C-c>O
 inoremap (( ()<Left>
-inoremap {<CR> {<CR>}<C-c>O<Tab>
+inoremap {<CR> {<CR>}<C-c>O
 inoremap {{ {}<Left>
 inoremap <<< <><Left>
 inoremap [ []<Left>
