@@ -108,8 +108,8 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>pdc <plug>(lsp-peek-declaration)
     nmap <buffer> <leader>pi <plug>(lsp-peek-implementation)
     nmap <buffer> <leader>pt <plug>(lsp-peek-type-definition)
-    nnoremap <buffer> <expr><C-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><C-b> lsp#scroll(-4)
+    nnoremap <buffer> <expr><C-j> lsp#scroll(+4)
+    nnoremap <buffer> <expr><C-k> lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 500
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
