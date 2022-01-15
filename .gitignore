@@ -10,5 +10,8 @@
 !/oh-my-posh/theme/**
 !/AutoHotkey/
 !/AutoHotkey/**
+!/install.sh
+!/iTerm2/
+!/iTerm2/**
 
 !.gitignore
