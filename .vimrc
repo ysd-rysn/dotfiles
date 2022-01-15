@@ -76,12 +76,29 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Indent guide
+Plug 'nathanaelkane/vim-indent-guides'
+
+" Close tag
+Plug 'alvan/vim-closetag'
+
 call plug#end()
+
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='angr'
+
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+
+" vim-closetag
+let g:closetag_filetypes = 'html,xhtml,phtml,go'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
 
 " vim-lsp
 function! s:on_lsp_buffer_enabled() abort
