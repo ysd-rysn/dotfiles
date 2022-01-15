@@ -28,7 +28,7 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 hi clear SpellCap
 hi SpellCap cterm=underline
-set shell
+set shell=/bin/bash
 set clipboard+=unnamed
 
 " Mapping Options
@@ -82,8 +82,15 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Close tag
 Plug 'alvan/vim-closetag'
 
+" Color scheme
+Plug 'morhetz/gruvbox'
+
 call plug#end()
 
+
+" gruvbox
+set background=dark
+colorscheme gruvbox
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
