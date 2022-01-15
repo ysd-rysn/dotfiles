@@ -90,6 +90,7 @@ call plug#end()
 
 " gruvbox
 set background=dark
+colorscheme gruvbox
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
