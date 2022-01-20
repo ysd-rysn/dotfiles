@@ -10,5 +10,7 @@
 !/oh-my-posh/theme/**
 !/AutoHotkey/
 !/AutoHotkey/**
+!/wsl/
+!/wsl/**
 
 !.gitignore
