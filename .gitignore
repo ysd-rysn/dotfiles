@@ -3,14 +3,15 @@
 /.**
 
 # white list
+!/setup.sh
 !/.vimrc
+!/.tmux.conf
 !/.gitconfig
 !/oh-my-posh/
 !/oh-my-posh/theme/
 !/oh-my-posh/theme/**
 !/AutoHotkey/
 !/AutoHotkey/**
-!/install.sh
 !/iTerm2/
 !/iTerm2/**
 
