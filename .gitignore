@@ -3,7 +3,8 @@
 /.**
 
 # white list
-!/setup.sh
+!/setup_scripts/
+!/setup_scripts/**
 !/.vimrc
 !/.tmux.conf
 !/.gitconfig
