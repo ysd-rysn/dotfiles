@@ -1,8 +1,6 @@
 .oh-my-zsh/cache/completions/
 
-{{ if ne .chezmoi.os "darwin" }}
 Brewfile
 scripts/macos_install.sh
 scripts/macos_defaults.sh
 scripts/macos_setup.sh
-{{ end }}

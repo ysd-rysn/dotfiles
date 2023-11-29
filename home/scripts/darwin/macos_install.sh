@@ -5,7 +5,7 @@ if [ "$(uname)" != "Darwin" ]; then
 	exit 1
 fi
 
-BREWFILE="$HOME/Brwefile"
+BREWFILE="$HOME/dotfiles/home/Brwefile"
 if [ -f "$BREWFILE" ]; then
 	brew bundle --file="$BREWFILE"
 else

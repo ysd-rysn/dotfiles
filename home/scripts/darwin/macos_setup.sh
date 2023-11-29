@@ -17,6 +17,7 @@ brew install gh
 
 # Configure aws cli
 aws configure --profile chezmoi
+export AWS_PROFILE=chezmoi
 
 $SCRIPT_DIR/macos_install.sh
 $SCRIPT_DIR/macos_defaults.sh
