@@ -1,5 +1,4 @@
-{{- if eq .chezmoi.os "darwin" }}
+{{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-$SCRIPT_DIR/darwin/masos_setup.sh
-{{- end}}
+$CHEZMOI_SOURCE_DIR/scripts/darwin/masos_setup.sh
+{{- end -}}
