@@ -1,0 +1,150 @@
+" Indentation Options
+set autoindent
+set smartindent
+set shiftwidth=4
+set smarttab
+set tabstop=4
+
+" Search Options
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+
+" Text Rendering Options
+syntax enable
+
+" User Interface Options
+set title
+set number relativenumber
+set cursorline
+set showmatch
+set wildmenu
+
+" Miscellaneous Options
+set history=1000
+set spell spelllang=en_us
+hi clear SpellBad
+hi SpellBad cterm=underline
+hi clear SpellCap
+hi SpellCap cterm=underline
+set shell=/bin/bash
+set clipboard+=unnamed
+
+" Mapping Options
+let mapleader = "\<space>"
+inoremap <silent> jj <ESC>
+" Auto closing
+inoremap (<CR> (<CR>)<C-c>O
+inoremap (( ()<Left>
+inoremap {<CR> {<CR>}<C-c>O
+inoremap {{ {}<Left>
+inoremap <<< <><Left>
+inoremap [ []<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap ` ``<Left>
+" Switch buffer
+nnoremap <C-p> :bprev<CR>
+nnoremap <C-n> :bnext<CR>
+" Delete buffer
+nnoremap <C-d> :bd<CR>
+" Toggle NERDTree
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+" Plugins
+call plug#begin('~/.vim/plugged')
+
+" LSP
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+" LSP Auto-complete
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" LSP golang
+Plug 'mattn/vim-goimports'
+
+" File system explorer
+Plug 'preservim/nerdtree'
+
+" All about surroundings
+Plug 'tpope/vim-surround'
+
+" Status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Indent guide
+Plug 'nathanaelkane/vim-indent-guides'
+
+" Close tag
+Plug 'alvan/vim-closetag'
+
+" Color scheme
+Plug 'morhetz/gruvbox'
+
+" emmet for vim
+Plug 'mattn/emmet-vim'
+
+call plug#end()
+
+
+" gruvbox
+set background=dark
+colorscheme gruvbox
+
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='angr'
+
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+
+" vim-closetag
+let g:closetag_filetypes = 'html,xhtml,phtml,go'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" vim-lsp
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> <leader>ca <plug>(lsp-code-action)
+    nmap <buffer> <leader>cl <plug>(lsp-code-lens)
+    nmap <buffer> <leader>gdf <plug>(lsp-definition)
+    nmap <buffer> <leader>gdc <plug>(lsp-declaration)
+    nmap <buffer> <leader>gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> <leader>gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> <leader>gr <plug>(lsp-references)
+    nmap <buffer> <leader>gi <plug>(lsp-implementation)
+    nmap <buffer> <leader>gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> <leader>sd <plug>(lsp-document-diagnostics)
+    nmap <buffer> <leader>gpd <plug>(lsp-previous-diagnostic)
+    nmap <buffer> <leader>gnd <plug>(lsp-next-diagnostic)
+    nmap <buffer> <leader>gpe <plug>(lsp-previous-error)
+    nmap <buffer> <leader>gne <plug>(lsp-next-error)
+    nmap <buffer> <leader>K <plug>(lsp-hover)
+    nmap <buffer> <leader>pdf <plug>(lsp-peek-definition)
+    nmap <buffer> <leader>pdc <plug>(lsp-peek-declaration)
+    nmap <buffer> <leader>pi <plug>(lsp-peek-implementation)
+    nmap <buffer> <leader>pt <plug>(lsp-peek-type-definition)
+    nnoremap <buffer> <expr><C-j> lsp#scroll(+4)
+    nnoremap <buffer> <expr><C-k> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 500
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
