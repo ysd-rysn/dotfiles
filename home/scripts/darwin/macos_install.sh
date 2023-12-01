@@ -7,6 +7,7 @@ fi
 
 BREWFILE="$HOME/dotfiles/home/Brewfile"
 if [ -f "$BREWFILE" ]; then
+	softwareupdate --install-rosetta --agree-to-license
 	brew bundle --file="$BREWFILE"
 else
 	echo "Not found $BREWFILE"
