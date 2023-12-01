@@ -5,7 +5,7 @@ if [ "$(uname)" != "Darwin" ]; then
 	exit 1
 fi
 
-BREWFILE="$HOME/dotfiles/home/Brewfile"
+BREWFILE="$HOME/dotfiles/home/dot_Brewfile"
 if [ -f "$BREWFILE" ]; then
 	softwareupdate --install-rosetta --agree-to-license
 	brew bundle --file="$BREWFILE"
