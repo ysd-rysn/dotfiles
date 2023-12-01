@@ -22,7 +22,7 @@ if [ ! -f $SSH_DIR/config ]; then
 	touch "$SSH_DIR/config"
 fi
 
-cat <<EOF >> "SSH_DIR/config"
+cat <<EOF >> "$SSH_DIR/config"
 Host github.com
 	AddKeysToAgent yes
 	UseKeychain yes
