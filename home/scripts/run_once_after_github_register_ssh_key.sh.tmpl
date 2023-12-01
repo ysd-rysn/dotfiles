@@ -1,0 +1,36 @@
+#!/bin/bash
+
+SSH_DIR="$HOME/.ssh"
+SSH_KEY_PATH="$SSH_DIR/id-ed25519"
+
+echo {{ (awsSecretsManager "GITHUB_USER_INFO").token | quote }} > $TMPDIR/github_token.txt
+
+gh auth login --with-token < github_token.txt
+
+rm $TMPDIR/github_token.txt
+
+if [ ! -f "$SSH_KEY_PATH" ]; then
+	echo "Generate ssh key"
+	ssh-keygen -t ed25519 -C {{ (awsSecretsManager "GITHUB_USER_INFO").email | quote }} -f "$SSH_KEY_PATH"
+else
+	echo "ssh key already exists: $SSH_KEY_PATH"
+fi
+
+{{ if eq .chezmoi.os "darwin" -}}
+eval "$(ssh-agent -s)"
+if [ ! -f $SSH_DIR/config ]; then
+	touch "$SSH_DIR/config"
+fi
+
+cat <<EOF >> "SSH_DIR/config"
+Host github.com
+	AddKeysToAgent yes
+	UseKeychain yes
+	IdentityFile ~/.ssh/id-ed25519
+EOF
+
+ssh-add --apple-use-keychain "$SSH_KEY_PATH"
+{{- end }}
+
+echo "Register public key to GitHub"
+gh ssh-key add "$SSH_KEY_PATH.pub" -t {{ .chezmoi.hostname | quote }}
