@@ -19,6 +19,6 @@ brew install gh
 aws configure --profile chezmoi
 export AWS_PROFILE=chezmoi
 
-SCRIPT_DIR=$HOME/dotfiles/home/scripts/darwin
+SCRIPT_DIR=$HOME/dotfiles/home/.chezmoiscripts/darwin
 $SCRIPT_DIR/macos_install.sh
 $SCRIPT_DIR/macos_defaults.sh
