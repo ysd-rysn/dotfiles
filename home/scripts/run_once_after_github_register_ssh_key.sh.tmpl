@@ -5,7 +5,7 @@ SSH_KEY_PATH="$SSH_DIR/id-ed25519"
 
 echo {{ (awsSecretsManager "GITHUB_USER_INFO").token | quote }} > $TMPDIR/github_token.txt
 
-gh auth login --with-token < github_token.txt
+gh auth login --with-token < $TMP_DIR/github_token.txt
 
 rm $TMPDIR/github_token.txt
 
