@@ -1,0 +1,6 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+$SCRIPT_DIR=$HOME/dotfiles/home/.chezmoiscripts/darwin
+$SCRIPT_DIR/macos_brew_bundle.sh
+$SCRIPT_DIR/macos_defaults.sh
+{{- end -}}

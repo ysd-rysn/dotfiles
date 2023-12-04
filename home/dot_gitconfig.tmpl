@@ -1,6 +1,6 @@
 [user]
-	name = {{ (awsSecretsManager "GITHUB_USER_INFO").username }}
-	email = {{ (awsSecretsManager "GITHUB_USER_INFO").email }}
+	name = {{ (bitwarden "item" "GitHub").login.username }}
+	email = {{ (bitwardenFields "item" "GitHub").noreply_email.value }}
 [init]
 	defaultBranch = main
 [core]

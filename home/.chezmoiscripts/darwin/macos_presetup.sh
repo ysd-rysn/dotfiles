@@ -11,14 +11,11 @@ if ! command -v brew >/dev/null; then
 fi
 
 
-# Install awscli, gh
-brew install awscli
+# Install bitwarden-cli, gh
+brew install bitwarden-cli
 brew install gh
 
-# Configure aws cli
-aws configure --profile chezmoi
-export AWS_PROFILE=chezmoi
+# Login Bitwarden
+export BW_SESSION=$(bw login --raw)
 
 SCRIPT_DIR=$HOME/dotfiles/home/.chezmoiscripts/darwin
-$SCRIPT_DIR/macos_install.sh
-$SCRIPT_DIR/macos_defaults.sh
