@@ -9,6 +9,6 @@ $SCRIPT_DIR/macos_defaults.sh
 rm -rf $HOME/.local/bin/chezmoi
 {{- end }}
 
-push {{ .chezmoi.workingTree }}
+cd {{ .chezmoi.workingTree }}
 git remote add origin-ssh git@github.com:ysd-rysn/dotfiles
-pop
+cd -
