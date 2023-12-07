@@ -9,7 +9,7 @@ if ! command -v brew >/dev/null; then
 	# Install homebrew
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
-	eval "$(/opt/homebrew/bin/brew shellenv)"
+	source $HOME/.zprofile
 fi
 
 
