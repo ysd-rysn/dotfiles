@@ -114,13 +114,15 @@ alias eat="exa -aT"
 alias el="exa -al --header --git"
 alias elt="exa -alT --header --git"
 
+{{ if eq .chezmoi.os "darwin" -}}
 # exports
 export PATH=$PATH:$HOME/.local/bin
+{{- end }}
 
 # direnv
 eval "$(direnv hook zsh)"
 
-{{- if eq .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" -}}
 # >>>> Vagrant command completion (start)
 fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
 compinit

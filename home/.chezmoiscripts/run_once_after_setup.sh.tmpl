@@ -1,6 +1,14 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
+
 SCRIPT_DIR=$HOME/dotfiles/home/.scripts/darwin
+
 $SCRIPT_DIR/macos_brew_bundle.sh
 $SCRIPT_DIR/macos_defaults.sh
-{{- end -}}
+
+rm -rf $HOME/.local/bin/chezmoi
+{{- end }}
+
+push {{ .chezmoi.workingTree }}
+git remote add origin-ssh git@github.com:ysd-rysn/dotfiles
+pop
