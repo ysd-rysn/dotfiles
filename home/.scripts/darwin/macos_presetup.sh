@@ -8,8 +8,8 @@ fi
 if ! command -v brew >/dev/null; then
 	# Install homebrew
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
-	source $HOME/.zprofile
+	(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zshrc
+	source $HOME/.zshrc
 fi
 
 
