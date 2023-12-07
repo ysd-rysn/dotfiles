@@ -43,6 +43,7 @@ cask "raycast"
 cask "slack"
 cask "spotify"
 cask "swiftformat-for-xcode"
+cask "tor-browser"
 cask "visual-studio-code"
 cask "warp"
 mas "1Password 7", id: 1333542190
