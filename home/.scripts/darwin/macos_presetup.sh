@@ -8,7 +8,8 @@ fi
 if ! command -v brew >/dev/null; then
 	# Install homebrew
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	export PATH=$PATH:/opt/homebrew/bin
+	(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 
