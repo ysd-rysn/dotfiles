@@ -1,3 +1,3 @@
 # dotfiles
 
-dotfiles managed by `chezmoi`
+dotfiles managed with `chezmoi`
