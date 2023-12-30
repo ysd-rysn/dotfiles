@@ -71,7 +71,6 @@ zstyle ':omz:update' mode disabled  # disable automatic updates
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-plugins=(asdf)
 plugins=(zsh-syntax-highlighting)
 
 {{- if eq .chezmoi.os "darwin" }}
@@ -123,6 +122,9 @@ export PATH=$PATH:$HOME/.local/bin
 eval "$(direnv hook zsh)"
 
 {{ if eq .chezmoi.os "darwin" -}}
+# asdf
+ . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 # >>>> Vagrant command completion (start)
 fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
 compinit
