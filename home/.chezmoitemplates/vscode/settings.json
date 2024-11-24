@@ -1,0 +1,287 @@
+{
+    "C_Cpp.updateChannel": "Insiders",
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [80],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "better-comments.highlightPlainText": false,
+    "better-comments.tags": [
+        {
+            "backgroundColor": "transparent",
+            "color": "#FF00FF",
+            "strikethrough": false,
+            "tag": "CHANGED"
+        },
+        {
+            "backgroundColor": "transparent",
+            "color": "green",
+            "strikethrough": false,
+            "tag": "FIXME"
+        },
+        {
+            "backgroundColor": "transparent",
+            "color": "#C0C0C0",
+            "strikethrough": false,
+            "tag": "NOTE"
+        },
+        {
+            "backgroundColor": "transparent",
+            "color": "#2C7CFF",
+            "strikethrough": false,
+            "tag": "REVIEW"
+        },
+        {
+            "backgroundColor": "transparent",
+            "color": "#FF5F17",
+            "strikethrough": false,
+            "tag": "TODO"
+        },
+        {
+            "backgroundColor": "transparent",
+            "color": "red",
+            "strikethrough": false,
+            "tag": "WARNING"
+        }
+    ],
+    "cSpell.languageSettings": [],
+    "code-runner.runInTerminal": true,
+    "dart.debugExternalPackageLibraries": true,
+    "dart.debugSdkLibraries": true,
+    "database-client.autoSync": true,
+    "diffEditor.codeLens": true,
+    "editor.accessibilitySupport": "off",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.codeLensFontFamily": "UbuntuMono Nerd Font Mono",
+    "editor.fontFamily": "UbuntuMono Nerd Font Mono",
+    "editor.fontSize": 14,
+    "editor.fontWeight": "normal",
+    "editor.formatOnSave": true,
+    "editor.guides.bracketPairs": true,
+    "editor.lineNumbers": "relative",
+    "editor.linkedEditing": true,
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": true,
+    "editor.suggest.insertMode": "replace",
+    "editor.suggestSelection": "first",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "typescript": "typescriptreact"
+    },
+    "emmet.preferences": {},
+    "files.watcherExclude": {
+        "**/.ammonite": true,
+        "**/.bloop": true,
+        "**/.metals": true
+    },
+    "git.ignoreMissingGitWarning": true,
+    "gitlens.defaultDateFormat": null,
+    "gitlens.defaultTimeFormat": null,
+    "gitlens.hovers.currentLine.over": "line",
+    "go.formatTool": "goimports",
+    "go.toolsManagement.autoUpdate": true,
+    "latex-workshop.docker.enabled": true,
+    "latex-workshop.docker.image.latex": "ysdrysn/texlive-ja:alpine",
+    "latex-workshop.latex.autoBuild.run": "onFileChange",
+    "latex-workshop.latex.recipe.default": "latexmk (latexmkrc)",
+    "markdown.marp.enableHtml": true,
+    "markdown.marp.pdf.noteAnnotations": true,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "npm.keybindingsChangedWarningShown": true,
+    "plantuml.render": "PlantUMLServer",
+    "plantuml.server": "http://localhost:8080",
+    "prettier.tabWidth": 4,
+    "python.defaultInterpreterPath": "C:\\Users\\b1019147\\anaconda3\\python.exe",
+    "quokka.startViewStatusBar": true,
+    "redhat.telemetry.enabled": false,
+    "svg.preview.mode": "svg",
+    "terminal.integrated.detectLocale": "off",
+    "terminal.integrated.fontFamily": "UbuntuMono Nerd Font Mono",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.tabs.enabled": true,
+    "todo-tree.general.tags": [
+        "CHANGED",
+        "FIXME",
+        "NOTE",
+        "REVIEW",
+        "TODO",
+        "WARNING"
+    ],
+    "todo-tree.highlights.customHighlight": {
+        "CHANGED": {
+            "foreground": "#FF00FF"
+        },
+        "FIXME": {
+            "foreground": "green"
+        },
+        "NOTE": {
+            "foreground": "#C0C0C0"
+        },
+        "REVIEW": {
+            "foreground": "#2C7CFF"
+        },
+        "TODO": {
+            "foreground": "#FF5F17"
+        },
+        "WARNING": {
+            "foreground": "red"
+        }
+    },
+    "todo-tree.highlights.defaultHighlight": {
+        "fontWeight": "bold",
+        "icon": "checklist",
+        "iconColour": "#2C7CFF",
+        "type": "text"
+    },
+    "vim.commandLineModeKeyBindings": [],
+    "vim.highlightedyank.enable": true,
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "after": ["<Esc>"],
+            "before": ["j", "j"]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<C-w>", "h"],
+            "commands": ["workbench.action.navigateLeft"]
+        },
+        {
+            "before": ["<C-w>", "j"],
+            "commands": ["workbench.action.navigateDown"]
+        },
+        {
+            "before": ["<C-w>", "k"],
+            "commands": ["workbench.action.navigateUp"]
+        },
+        {
+            "before": ["<C-w>", "l"],
+            "commands": ["workbench.action.navigateRight"]
+        },
+        {
+            "before": ["<C-w>", "v"],
+            "commands": ["workbench.action.splitEditorRight"]
+        },
+        {
+            "before": ["<C-w>", "s"],
+            "commands": ["workbench.action.splitEditorDown"]
+        },
+        {
+            "before": ["<C-w>", "c"],
+            "commands": ["workbench.action.closeActiveEditor"]
+        },
+        {
+            "before": ["<C-w>", "o"],
+            "commands": ["workbench.action.closeEditorsInOtherGroups"]
+        },
+        {
+            "before": ["<C-w>", "n"],
+            "commands": ["workbench.action.nextEditor"]
+        },
+        {
+            "before": ["<C-w>", "p"],
+            "commands": ["workbench.action.previousEditor"]
+        },
+        {
+            "before": ["]", "e"],
+            "commands": ["editor.action.marker.next"]
+        },
+        {
+            "before": ["[", "e"],
+            "commands": ["editor.action.marker.prev"]
+        },
+        {
+            "before": ["<leader>", "d"],
+            "commands": ["editor.action.revealDefinition"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "commands": ["editor.action.showHover"]
+        },
+        {
+            "before": ["<leader>", "r"],
+            "commands": ["editor.action.referenceSearch.trigger"]
+        },
+        {
+            "before": ["<leader>", "i"],
+            "commands": ["editor.action.goToImplementation"]
+        },
+        {
+            "before": ["<leader>", "b"],
+            "commands": ["workbench.action.navigateBack"]
+        }
+    ],
+    "vim.useSystemClipboard": true,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorCustomizations": {
+        "[Material Theme Darker High Contrast]": {}
+    },
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "none",
+    "yaml.customTags": [
+        "!And",
+        "!And sequence",
+        "!If",
+        "!If sequence",
+        "!Not",
+        "!Not sequence",
+        "!Equals",
+        "!Equals sequence",
+        "!Or",
+        "!Or sequence",
+        "!FindInMap",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Join",
+        "!Join sequence",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!Sub sequence",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!ImportValue sequence",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Split sequence"
+    ],
+    "yaml.schemas": {
+        "file:///Users/ysd/.vscode/extensions/docsmsft.docs-yaml-1.0.1/dist/toc.schema.json": "/toc\\.yml/i"
+    }
+}
