@@ -3,7 +3,7 @@
 SSH_DIR="$HOME/.ssh"
 SSH_KEY_PATH="$SSH_DIR/id-ed25519"
 
-echo {{ (bitwardenFields "item" "GitHub").token.value | quote }} > $TMPDIR/github_token.txt
+echo {{ (bitwardenFields "item" "36c16dfe-c070-423e-8121-b0cd00a38251").token.value | quote }} > $TMPDIR/github_token.txt
 
 gh auth login --with-token < $TMPDIR/github_token.txt
 
@@ -11,7 +11,7 @@ rm $TMPDIR/github_token.txt
 
 if [ ! -f "$SSH_KEY_PATH" ]; then
 	echo "Generate ssh key"
-	ssh-keygen -t ed25519 -C {{ (bitwardenFields "item" "GitHub").noreply_email.value | quote }} -f "$SSH_KEY_PATH"
+	ssh-keygen -t ed25519 -C {{ (bitwardenFields "item" "36c16dfe-c070-423e-8121-b0cd00a38251").noreply_email.value | quote }} -f "$SSH_KEY_PATH"
 
 	{{ if eq .chezmoi.os "darwin" -}}
 	eval "$(ssh-agent -s)"

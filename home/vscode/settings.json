@@ -1,5 +1,4 @@
 {
-    "C_Cpp.updateChannel": "Insiders",
     "[dart]": {
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
@@ -120,7 +119,6 @@
     "plantuml.render": "PlantUMLServer",
     "plantuml.server": "http://localhost:8080",
     "prettier.tabWidth": 4,
-    "python.defaultInterpreterPath": "C:\\Users\\b1019147\\anaconda3\\python.exe",
     "quokka.startViewStatusBar": true,
     "redhat.telemetry.enabled": false,
     "svg.preview.mode": "svg",
@@ -280,8 +278,5 @@
         "!Select sequence",
         "!Split",
         "!Split sequence"
-    ],
-    "yaml.schemas": {
-        "file:///Users/ysd/.vscode/extensions/docsmsft.docs-yaml-1.0.1/dist/toc.schema.json": "/toc\\.yml/i"
-    }
+    ]
 }

@@ -4,8 +4,11 @@
 iTerm2/
 iTerm2/**
 
+vscode/
+vscode/**
+
 {{- if ne .chezmoi.os "darwin" }}
 .Brewfile
-~/Library/Application\ Support/Code/User/keybindings.json
-~/Library/Application\ Support/Code/User/settings.json
+~/Library/Application Support/Code/User/keybindings.json
+~/Library/Application Support/Code/User/settings.json
 {{- end }}
