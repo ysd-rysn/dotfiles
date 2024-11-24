@@ -1,3 +1,3 @@
 # dotfiles
 
-dotfiles managed with `chezmoi`
+dotfiles managed with [chezmoi](https://www.chezmoi.io/)
