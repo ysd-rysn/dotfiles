@@ -112,11 +112,11 @@ alias ea="exa -a"
 alias eat="exa -aT"
 alias el="exa -al --header --git"
 alias elt="exa -alT --header --git"
+alias lg="lazygit"
 
-{{ if eq .chezmoi.os "darwin" -}}
 # exports
 export PATH=$PATH:$HOME/.local/bin
-{{- end }}
+export PATH=$PATH:$HOME/fvm/default/bin
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -129,4 +129,9 @@ eval "$(direnv hook zsh)"
 fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
 compinit
 # <<<<  Vagrant command completion (end)
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/ysd/.dart-cli-completion/zsh-config.zsh ]] && . /Users/ysd/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
 {{- end }}
