@@ -278,5 +278,7 @@
         "!Select sequence",
         "!Split",
         "!Split sequence"
-    ]
+    ],
+    "workbench.activityBar.location": "bottom",
+    "terminal.external.osxExec": "Warp.app"
 }
