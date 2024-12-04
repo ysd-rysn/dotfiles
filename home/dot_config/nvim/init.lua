@@ -1,2 +1,2 @@
-require("ysd.core")
-require("ysd.lazy")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

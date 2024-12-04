@@ -94,6 +94,9 @@
         "typescript": "typescriptreact"
     },
     "emmet.preferences": {},
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
     "files.watcherExclude": {
         "**/.ammonite": true,
         "**/.bloop": true,
@@ -122,6 +125,7 @@
     "quokka.startViewStatusBar": true,
     "redhat.telemetry.enabled": false,
     "svg.preview.mode": "svg",
+    "terminal.external.osxExec": "Warp.app",
     "terminal.integrated.detectLocale": "off",
     "terminal.integrated.fontFamily": "UbuntuMono Nerd Font Mono",
     "terminal.integrated.fontSize": 14,
@@ -240,7 +244,13 @@
         }
     ],
     "vim.useSystemClipboard": true,
+    "vscode-neovim.compositeKeys": {
+        "jj": {
+            "command": "vscode-neovim.escape"
+        }
+    },
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.activityBar.location": "bottom",
     "workbench.colorCustomizations": {
         "[Material Theme Darker High Contrast]": {}
     },
@@ -278,7 +288,5 @@
         "!Select sequence",
         "!Split",
         "!Split sequence"
-    ],
-    "workbench.activityBar.location": "bottom",
-    "terminal.external.osxExec": "Warp.app"
+    ]
 }
