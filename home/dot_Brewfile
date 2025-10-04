@@ -1,81 +1,167 @@
+tap "daytonaio/cli"
 tap "hashicorp/tap"
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "jesseduffield/lazygit"
-tap "lencx/chatgpt", "https://github.com/lencx/ChatGPT.git"
-tap "leoafarias/fvm"
+# Run your GitHub Actions locally
 brew "act"
-brew "coreutils"
+# Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-brew "asdf"
-brew "awscli"
-brew "bat"
-brew "bitwarden-cli"
-brew "chezmoi"
-brew "cloudflared"
-brew "cmake"
-brew "curl"
-brew "direnv"
-brew "exa"
-brew "ffmpeg"
-brew "gawk"
-brew "gh"
-brew "git"
-brew "glow"
-brew "gnupg"
-brew "go"
-brew "htop"
-brew "jq"
-brew "lima"
-brew "mas"
-brew "mkcert"
-brew "neovim"
-brew "ollama"
-brew "prettyping"
-brew "qemu"
-brew "ripgrep"
-brew "tailscale"
-brew "tldr"
-brew "tmux"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Automate deployment, configuration, and upgrading
+brew "ansible"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Secure and free password manager for all of your devices
+brew "bitwarden-cli"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
+# Cross-platform make
+brew "cmake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Embeddable SQL OLAP Database Management System
+brew "duckdb"
+# Modern, maintained replacement for ls
+brew "eza"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GNU awk utility
+brew "gawk"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Render markdown on the CLI
+brew "glow"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Improved top (interactive process viewer)
+brew "htop"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Mac App Store command-line interface
+brew "mas"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
+# Fast, disk space efficient package manager
+brew "pnpm"
+# Wrapper to colorize and simplify ping's output
+brew "prettyping"
+# Generic machine emulator and virtualizer
+brew "qemu"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale"
+# Very fast implementation of tldr in Rust
+brew "tealdeer"
+# User interface to the TELNET protocol
+brew "telnet"
+# Terminal multiplexer
+brew "tmux"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Vi 'workalike' with many additional features
 brew "vim"
+# Watch files and take action when they change
+brew "watchman"
+# Internet file retriever
+brew "wget"
+# JavaScript package manager
+brew "yarn"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Feature-rich command-line audio/video downloader
 brew "yt-dlp"
-brew "jesseduffield/lazygit/lazygit"
-brew "leoafarias/fvm/fvm"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Daytona CLI
+brew "daytonaio/cli/daytona"
+# Packer
+brew "hashicorp/tap/packer"
+# Terraform
+brew "hashicorp/tap/terraform"
+# Vault
+brew "hashicorp/tap/vault"
+# API development platform
+cask "apidog"
+# Chromium based browser
 cask "arc"
-cask "aws-vault"
+# Securely stores and accesses AWS credentials in a development environment
+cask "aws-vault-binary"
+# 3D model slicing software for 3D printers, maintained by Bambu Lab
+cask "bambu-studio"
+# Cross platform SQL editor and database management app
+cask "beekeeper-studio"
+# Desktop password and login vault
 cask "bitwarden"
-cask "chatgpt"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Free app that makes your Internet safer
 cask "cloudflare-warp"
-cask "cursor"
+# Voice and text chat software
 cask "discord"
-cask "docker"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
+# Collaborative team software
 cask "figma"
 cask "font-ricty-diminished"
 cask "font-ubuntu-mono-nerd-font"
-cask "godot"
-cask "google-chrome"
+# Client for the Google Drive storage service
 cask "google-drive"
+# Japanese input software
 cask "google-japanese-ime"
-cask "hashicorp-vagrant"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Keyboard customiser
 cask "karabiner-elements"
-cask "kindle"
+# App to write, plan, collaborate, and get organised
 cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Collaboration platform for API development
 cask "postman"
+# Imaging utility to install operating systems to a microSD card
 cask "raspberry-pi-imager"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Team communication and collaboration software
 cask "slack"
+# Music streaming service
 cask "spotify"
+# Xcode Extension for reformatting Swift code
 cask "swiftformat-for-xcode"
+# Web browser focusing on security
 cask "tor-browser"
-cask "utm"
+# Open-source code editor
 cask "visual-studio-code"
+# Rust-based terminal
 cask "warp"
-mas "1Password 7", id: 1333542190
-mas "Keynote", id: 409183694
+# Network protocol analyzer
+cask "wireshark-app"
+# Gecko based web browser
+cask "zen"
+mas "Kindle", id: 302584613
 mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Xcode", id: 497799835
