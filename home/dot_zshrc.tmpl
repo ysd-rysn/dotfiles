@@ -75,6 +75,8 @@ plugins=(zsh-syntax-highlighting)
 
 {{- if eq .chezmoi.os "darwin" }}
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+plugins=(... mise)
 {{- end }}
 
 source $ZSH/oh-my-zsh.sh
@@ -105,33 +107,29 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+{{ if eq .chezmoi.os "darwin" -}}
 # aliases
-alias e="exa"
-alias et="exa -T"
-alias ea="exa -a"
-alias eat="exa -aT"
-alias el="exa -al --header --git"
-alias elt="exa -alT --header --git"
 alias lg="lazygit"
 
 # exports
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/fvm/default/bin
+export PATH=$PATH:$HOME/go/bin
 
 # direnv
 eval "$(direnv hook zsh)"
 
-{{ if eq .chezmoi.os "darwin" -}}
-# asdf
- . /opt/homebrew/opt/asdf/libexec/asdf.sh
+# fzf shell integration
+source <(fzf --zsh)
 
-# >>>> Vagrant command completion (start)
-fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.0/contrib/zsh $fpath)
-compinit
-# <<<<  Vagrant command completion (end)
+# zoxide
+eval "$(zoxide init zsh)"
 
-## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/ysd/.dart-cli-completion/zsh-config.zsh ]] && . /Users/ysd/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
+# mise
+eval "$(mise activate zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# kiro
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 {{- end }}
