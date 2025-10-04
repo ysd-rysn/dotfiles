@@ -1,0 +1,6 @@
+{
+  "packages": [
+    "@anthropic-ai/claude-code",
+    "@google/gemini-cli"
+  ]
+}
