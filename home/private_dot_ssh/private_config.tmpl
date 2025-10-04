@@ -1,0 +1,62 @@
+# Default settings for all hosts
+Host *
+    # Keep connections alive
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+
+    # Use SSH keys from macOS Keychain
+    {{- if eq .chezmoi.os "darwin" }}
+    UseKeychain yes
+    AddKeysToAgent yes
+    {{- end }}
+
+    # Security settings
+    IdentitiesOnly yes
+
+    # Connection settings
+    Compression yes
+    TCPKeepAlive yes
+
+Host github.com
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id-ed25519-github
+
+Host raspi5
+    HostName 192.168.1.20
+    User ysd
+    Port 22
+    IdentityFile ~/.ssh/id-ed25519-raspberry-pi-5
+    ForwardAgent yes
+    #StrictHostKeyChecking no # Fix this later
+
+Host raspi3b
+    HostName 192.168.1.21
+    User ysd
+    Port 22
+    IdentityFile ~/.ssh/id-ed25519-raspberry-pi-3b
+
+Host rtx1210
+    HostName 192.168.1.1
+    User ysd
+    Port 22
+    IdentityFile ~/.ssh/id-ed25519-rtx1210
+
+# Proxmox direct connection
+Host proxmox
+    HostName 192.168.11.32
+    User root
+    Port 22
+    IdentityFile ~/.ssh/id-ed25519
+
+Host dokploy-main
+    HostName 192.168.20.100
+    User dokploy
+    Port 22
+    IdentityFile ~/.ssh/id-ed25519-dokploy-main
+
+Host dokploy-worker
+    HostName 192.168.20.101
+    User dokploy-worker
+    Port 22
+    IdentityFile ~/.ssh/id-ed25519-dokploy-worker

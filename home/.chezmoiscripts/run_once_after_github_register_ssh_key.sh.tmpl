@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SSH_DIR="$HOME/.ssh"
-SSH_KEY_PATH="$SSH_DIR/id-ed25519"
+SSH_KEY_PATH="$SSH_DIR/id-ed25519-github"
 
 echo {{ (bitwardenFields "item" "36c16dfe-c070-423e-8121-b0cd00a38251").token.value | quote }} > $TMPDIR/github_token.txt
 
