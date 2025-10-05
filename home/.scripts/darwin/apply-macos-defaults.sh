@@ -18,10 +18,6 @@ script_header "macOS System Defaults"
 ## Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
-## Reveal IP address, hostname, OS version, etc. when clicking the clock
-## in the login window
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-
 # Appearance
 
 ## Use Dark Mode
@@ -88,23 +84,6 @@ defaults write com.apple.finder "FXPreferredViewStyle" -string "Nlsv"
 ## New Finder windows show home directory
 defaults write com.apple.finder "NewWindowTarget" -string "PfHm"
 defaults write com.apple.finder "NewWindowTargetPath" -string "file://$HOME/"
-
-## Show external hard drives on desktop
-defaults write com.apple.finder "ShowExternalHardDrivesOnDesktop" -bool "true"
-
-## Do not show internal hard drives on desktop
-defaults write com.apple.finder "ShowHardDrivesOnDesktop" -bool "false"
-
-## Show mounted servers on desktop
-defaults write com.apple.finder "ShowMountedServersOnDesktop" -bool "true"
-
-## Show removable media on desktop
-defaults write com.apple.finder "ShowRemovableMediaOnDesktop" -bool "true"
-
-# Applications
-
-## Activity Monitor: Show Energy window by default
-defaults write com.apple.ActivityMonitor "ShowCategory" -int 102
 
 script_footer "macOS System Defaults"
 log_warning "Some settings require a reboot to take effect"

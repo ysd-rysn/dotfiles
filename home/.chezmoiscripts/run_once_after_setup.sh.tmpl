@@ -24,11 +24,11 @@ if check_file "$BREW_BUNDLE"; then
 fi
 
 # Apply macOS defaults
-MACOS_DEFAULTS="$SCRIPT_DIR/apply-macos-defaults.sh"
-if check_file "$MACOS_DEFAULTS"; then
-    log_info "Applying macOS defaults..."
-    "$MACOS_DEFAULTS"
-fi
+#MACOS_DEFAULTS="$SCRIPT_DIR/apply-macos-defaults.sh"
+#if check_file "$MACOS_DEFAULTS"; then
+#    log_info "Applying macOS defaults..."
+#    "$MACOS_DEFAULTS"
+#fi
 
 # Clean up chezmoi binary
 if [ -f "$HOME/.local/bin/chezmoi" ]; then
