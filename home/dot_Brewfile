@@ -161,6 +161,7 @@ cask "warp"
 cask "wireshark-app"
 # Gecko based web browser
 #cask "zen"
+cask "tailscale-app"
 mas "Kindle", id: 302584613
 mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825

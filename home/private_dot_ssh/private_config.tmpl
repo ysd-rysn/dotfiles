@@ -9,18 +9,9 @@ Host *
     IdentityAgent ~/.bitwarden-ssh-agent.sock
     {{- end }}
 
-    # Security settings
-    IdentitiesOnly yes
-
     # Connection settings
     Compression yes
     TCPKeepAlive yes
-
-Host github.com
-    # Bitwarden SSH Agent handles key management
-    {{- if eq .chezmoi.os "darwin" }}
-    IdentityAgent ~/.bitwarden-ssh-agent.sock
-    {{- end }}
 
 Host raspi5
     HostName raspi5.lan

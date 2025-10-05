@@ -76,7 +76,7 @@ plugins=(zsh-syntax-highlighting)
 {{- if eq .chezmoi.os "darwin" }}
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-plugins=(... mise)
+plugins=(mise)
 {{- end }}
 
 source $ZSH/oh-my-zsh.sh
