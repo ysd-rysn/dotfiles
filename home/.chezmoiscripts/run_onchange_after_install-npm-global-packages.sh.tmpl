@@ -3,38 +3,17 @@
 # Install global npm packages
 # This script runs when global-packages.json changes
 
-set -e
+set -euo pipefail
 
-PACKAGES_FILE="$HOME/.config/npm/global-packages.json"
+# Delegate to external script for actual installation
+INSTALL_SCRIPT="{{ .paths.scripts_dir }}/common/install-npm-global-packages.sh"
 
-if [ ! -f "$PACKAGES_FILE" ]; then
-    echo "No global packages file found at $PACKAGES_FILE"
-    exit 0
+if [ -f "$INSTALL_SCRIPT" ]; then
+    "$INSTALL_SCRIPT"
+else
+    echo "ERROR: Installation script not found: $INSTALL_SCRIPT"
+    exit 1
 fi
-
-if ! command -v node &> /dev/null; then
-    echo "Node.js is not installed. Skipping npm global package installation."
-    exit 0
-fi
-
-if ! command -v jq &> /dev/null; then
-    echo "jq is not installed. Installing packages without jq..."
-    # Fallback: install packages manually listed
-    npm install -g @anthropic-ai/claude-code @google/gemini-cli @openai/codex gluestack-ui
-    exit 0
-fi
-
-echo "Installing global npm packages..."
-
-# Read packages from JSON file and install
-jq -r '.packages[]' "$PACKAGES_FILE" | while read -r package; do
-    if [ -n "$package" ]; then
-        echo "Installing $package..."
-        npm install -g "$package"
-    fi
-done
-
-echo "Global npm packages installation complete!"
 
 # Hash of the packages file to detect changes
 # global-packages.json hash: {{ include ".config/npm/global-packages.json" | sha256sum }}

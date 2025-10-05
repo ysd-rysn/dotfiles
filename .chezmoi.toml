@@ -1,3 +1,0 @@
-[awsSecretsManager]
-    profile = chezmoi
-    region = ap-northeast-1

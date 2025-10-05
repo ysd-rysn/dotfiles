@@ -1,14 +1,67 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-SCRIPT_DIR=$HOME/dotfiles/home/.scripts/darwin
+set -euo pipefail
 
-$SCRIPT_DIR/macos_brew_bundle.sh
-$SCRIPT_DIR/macos_defaults.sh
+# Source common utilities
+source "$HOME/.scripts/lib/util.sh"
 
-rm -rf $HOME/.local/bin/chezmoi
+# Setup error trap
+setup_error_trap
+
+SCRIPT_DIR="{{ .paths.scripts_darwin }}"
+
+script_header "Post-Setup Configuration"
+
+# Verify script directory exists
+check_dir "$SCRIPT_DIR" || exit 1
+
+# Run Homebrew bundle installation
+BREW_BUNDLE="$SCRIPT_DIR/install-brwe-packages.sh"
+if check_file "$BREW_BUNDLE"; then
+    log_info "Running Homebrew bundle installation..."
+    "$BREW_BUNDLE"
+fi
+
+# Apply macOS defaults
+MACOS_DEFAULTS="$SCRIPT_DIR/apply-macos-defaults.sh"
+if check_file "$MACOS_DEFAULTS"; then
+    log_info "Applying macOS defaults..."
+    "$MACOS_DEFAULTS"
+fi
+
+# Clean up chezmoi binary
+if [ -f "$HOME/.local/bin/chezmoi" ]; then
+    log_info "Removing temporary chezmoi binary..."
+    rm -rf "$HOME/.local/bin/chezmoi"
+fi
+
 {{- end }}
 
-cd {{ .chezmoi.workingTree }}
-git remote add origin-ssh git@github.com:ysd-rysn/dotfiles
-cd -
+# Configure git remote (cross-platform)
+WORKING_TREE="{{ .chezmoi.workingTree }}"
+GITHUB_SSH_URL="git@github.com:{{ .github.username }}/{{ .github.repository }}.git"
+
+if check_dir "$WORKING_TREE"; then
+    log_info "Verifying git remote configuration..."
+    cd "$WORKING_TREE"
+
+    # Check if origin uses HTTPS and convert to SSH if needed
+    ORIGIN_URL=$(git remote get-url origin 2>/dev/null || echo "")
+
+    if [[ "$ORIGIN_URL" == https://* ]]; then
+        log_info "Converting origin remote from HTTPS to SSH..."
+        git remote set-url origin "$GITHUB_SSH_URL"
+        log_success "Remote 'origin' converted to SSH"
+    elif [[ "$ORIGIN_URL" == git@github.com:* ]]; then
+        log_info "Remote 'origin' already uses SSH"
+    elif [ -z "$ORIGIN_URL" ]; then
+        log_info "Adding origin remote with SSH..."
+        git remote add origin "$GITHUB_SSH_URL"
+        log_success "Remote 'origin' added"
+    fi
+
+    cd - > /dev/null
+fi
+
+script_footer "Post-Setup Configuration"
