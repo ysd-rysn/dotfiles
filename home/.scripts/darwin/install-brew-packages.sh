@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Source common utilities
-source "$HOME/.scripts/lib/util.sh"
+source "../lib/util.sh"
 
 # Setup error trap
 setup_error_trap
