@@ -23,34 +23,33 @@ Host github.com
     {{- end }}
 
 Host raspi5
-    HostName 192.168.1.20
+    HostName raspi5.lan
     User ysd
     Port 22
     ForwardAgent yes
-    #StrictHostKeyChecking no # Fix this later
 
 Host raspi3b
-    HostName 192.168.1.21
+    HostName raspi3b.lan
     User ysd
     Port 22
 
 Host rtx1210
-    HostName 192.168.1.1
+    HostName rtx1210.lan
     User ysd
     Port 22
 
 # Proxmox direct connection
 Host proxmox
-    HostName 192.168.11.32
+    HostName proxmox.lan
     User root
     Port 22
 
 Host dokploy-main
-    HostName 192.168.20.100
+    HostName dokploy-main.lan
     User dokploy
     Port 22
 
 Host dokploy-worker
-    HostName 192.168.20.101
+    HostName dokploy-worker.lan
     User dokploy-worker
     Port 22
