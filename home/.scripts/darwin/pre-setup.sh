@@ -42,6 +42,9 @@ log_info "Installing required CLI tools..."
 brew_install_if_missing bitwarden-cli
 brew_install_if_missing gh
 
+# Reload Homebrew environment to ensure bw is in PATH
+eval "$(brew shellenv)"
+
 # Bitwarden authentication
 log_info "Setting up Bitwarden authentication..."
 
