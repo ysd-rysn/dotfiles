@@ -17,7 +17,7 @@ script_header "Post-Setup Configuration"
 check_dir "$SCRIPT_DIR" || exit 1
 
 # Run Homebrew bundle installation
-BREW_BUNDLE="$SCRIPT_DIR/install-brwe-packages.sh"
+BREW_BUNDLE="$SCRIPT_DIR/install-brew-packages.sh"
 if check_file "$BREW_BUNDLE"; then
     log_info "Running Homebrew bundle installation..."
     "$BREW_BUNDLE"

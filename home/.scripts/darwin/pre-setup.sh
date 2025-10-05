@@ -20,7 +20,10 @@ if ! command -v brew >/dev/null 2>&1; then
 
 	# Add Homebrew to PATH
 	if [ -f "/opt/homebrew/bin/brew" ]; then
-		(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> "$HOME/.zprofile"
+		if ! grep -q 'eval "$(/opt/homebrew/bin/brew shellenv)"' "$HOME/.zprofile" 2>/dev/null; then
+			(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> "$HOME/.zprofile"
+			log_info "Added Homebrew to .zprofile"
+		fi
 		eval "$(/opt/homebrew/bin/brew shellenv)"
 		log_success "Homebrew installed successfully"
 	else
@@ -58,9 +61,14 @@ else
 fi
 
 # Persist BW_SESSION to shell profile for subsequent scripts
-if ! grep -q "export BW_SESSION" "$HOME/.zprofile" 2>/dev/null; then
+if ! grep -q "^export BW_SESSION=" "$HOME/.zprofile" 2>/dev/null; then
 	echo "export BW_SESSION=\"$BW_SESSION\"" >> "$HOME/.zprofile"
 	log_info "BW_SESSION persisted to .zprofile"
+else
+	# Update existing BW_SESSION if different
+	sed -i.bak "s|^export BW_SESSION=.*|export BW_SESSION=\"$BW_SESSION\"|" "$HOME/.zprofile"
+	rm -f "$HOME/.zprofile.bak"
+	log_info "BW_SESSION updated in .zprofile"
 fi
 
 script_footer "macOS Pre-Setup"
