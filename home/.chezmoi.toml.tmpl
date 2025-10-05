@@ -6,18 +6,10 @@
     [data.github]
         username = "ysd-rysn"
         repository = "dotfiles"
-        ssh_key_name = "id-ed25519-github"
-
-    # Bitwarden configuration
-    [data.bitwarden]
-        github_ssh_item = "GitHub SSH Key"
-        github_ssh_field = "private_key"
 
     # Script paths
     [data.paths]
-        dotfiles_repo = "{{ .chezmoi.homeDir }}/dotfiles"
-        scripts_dir = "{{ .chezmoi.homeDir }}/.scripts"
-        scripts_darwin = "{{ .chezmoi.homeDir }}/dotfiles/home/.scripts/darwin"
+        scripts_dir = "{{ .chezmoi.workingTree }}/.scripts"
         ssh_dir = "{{ .chezmoi.homeDir }}/.ssh"
 
 [awsSecretsManager]
