@@ -61,15 +61,15 @@ else
 fi
 
 # Persist BW_SESSION to shell profile for subsequent scripts
-if ! grep -q "^export BW_SESSION=" "$HOME/.zprofile" 2>/dev/null; then
-	echo "export BW_SESSION=\"$BW_SESSION\"" >> "$HOME/.zprofile"
-	log_info "BW_SESSION persisted to .zprofile"
-else
-	# Update existing BW_SESSION if different
-	sed -i.bak "s|^export BW_SESSION=.*|export BW_SESSION=\"$BW_SESSION\"|" "$HOME/.zprofile"
-	rm -f "$HOME/.zprofile.bak"
-	log_info "BW_SESSION updated in .zprofile"
+# Remove any existing BW_SESSION lines to ensure idempotency
+if [ -f "$HOME/.zprofile" ]; then
+	grep -v "^export BW_SESSION=" "$HOME/.zprofile" > "$HOME/.zprofile.tmp" || true
+	mv "$HOME/.zprofile.tmp" "$HOME/.zprofile"
 fi
+
+# Add new BW_SESSION
+echo "export BW_SESSION=\"$BW_SESSION\"" >> "$HOME/.zprofile"
+log_info "BW_SESSION persisted to .zprofile"
 
 script_footer "macOS Pre-Setup"
 log_info "BW_SESSION is available for subsequent scripts"
