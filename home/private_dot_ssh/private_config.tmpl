@@ -4,10 +4,9 @@ Host *
     ServerAliveInterval 60
     ServerAliveCountMax 3
 
-    # Use SSH keys from macOS Keychain
+    # Use Bitwarden SSH Agent
     {{- if eq .chezmoi.os "darwin" }}
-    UseKeychain yes
-    AddKeysToAgent yes
+    IdentityAgent ~/.bitwarden-ssh-agent.sock
     {{- end }}
 
     # Security settings
@@ -18,15 +17,15 @@ Host *
     TCPKeepAlive yes
 
 Host github.com
-    AddKeysToAgent yes
-    UseKeychain yes
-    IdentityFile ~/.ssh/id-ed25519-github
+    # Bitwarden SSH Agent handles key management
+    {{- if eq .chezmoi.os "darwin" }}
+    IdentityAgent ~/.bitwarden-ssh-agent.sock
+    {{- end }}
 
 Host raspi5
     HostName 192.168.1.20
     User ysd
     Port 22
-    IdentityFile ~/.ssh/id-ed25519-raspberry-pi-5
     ForwardAgent yes
     #StrictHostKeyChecking no # Fix this later
 
@@ -34,29 +33,24 @@ Host raspi3b
     HostName 192.168.1.21
     User ysd
     Port 22
-    IdentityFile ~/.ssh/id-ed25519-raspberry-pi-3b
 
 Host rtx1210
     HostName 192.168.1.1
     User ysd
     Port 22
-    IdentityFile ~/.ssh/id-ed25519-rtx1210
 
 # Proxmox direct connection
 Host proxmox
     HostName 192.168.11.32
     User root
     Port 22
-    IdentityFile ~/.ssh/id-ed25519
 
 Host dokploy-main
     HostName 192.168.20.100
     User dokploy
     Port 22
-    IdentityFile ~/.ssh/id-ed25519-dokploy-main
 
 Host dokploy-worker
     HostName 192.168.20.101
     User dokploy-worker
     Port 22
-    IdentityFile ~/.ssh/id-ed25519-dokploy-worker
