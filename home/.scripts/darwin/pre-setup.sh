@@ -49,25 +49,29 @@ eval "$(brew shellenv)"
 log_info "Setting up Bitwarden authentication..."
 
 # Check if already logged in
-if bw login --check &>/dev/null; then
+if bw login --check 2>/dev/null; then
 	log_info "Already logged into Bitwarden"
 
-	# Check if session is valid by testing unlock status
+	# Check if we have a valid session
 	if [ -n "${BW_SESSION:-}" ]; then
-		if BW_SESSION="$BW_SESSION" bw unlock --check &>/dev/null; then
-			log_info "Bitwarden already unlocked"
+		# Test if session is still valid
+		if bw unlock --check 2>/dev/null; then
+			log_info "Bitwarden vault already unlocked"
 		else
-			log_info "Session invalid or locked. Unlocking Bitwarden vault..."
+			# Session exists but vault is locked
+			log_info "Unlocking Bitwarden vault..."
 			export BW_SESSION=$(bw unlock --raw)
 			log_success "Bitwarden vault unlocked"
 		fi
 	else
-		log_info "No session found. Unlocking Bitwarden vault..."
+		# No session, need to unlock
+		log_info "No active session. Unlocking Bitwarden vault..."
 		export BW_SESSION=$(bw unlock --raw)
 		log_success "Bitwarden vault unlocked"
 	fi
 else
-	log_info "Logging into Bitwarden..."
+	# Not logged in, need to login
+	log_info "Not logged in. Logging into Bitwarden..."
 	export BW_SESSION=$(bw login --raw)
 	log_success "Bitwarden login successful"
 fi
