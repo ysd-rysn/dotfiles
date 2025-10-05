@@ -2,8 +2,11 @@
 
 set -euo pipefail
 
+# Get script directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Source common utilities
-source "../lib/util.sh"
+source "$SCRIPT_DIR/../lib/util.sh"
 
 # Setup error trap
 setup_error_trap
