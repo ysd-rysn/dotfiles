@@ -52,11 +52,17 @@ log_info "Setting up Bitwarden authentication..."
 if bw login --check &>/dev/null; then
 	log_info "Already logged into Bitwarden"
 
-	# Check if already unlocked
-	if [ -n "${BW_SESSION:-}" ] && bw unlock --check &>/dev/null; then
-		log_info "Bitwarden already unlocked"
+	# Check if session is valid by testing unlock status
+	if [ -n "${BW_SESSION:-}" ]; then
+		if BW_SESSION="$BW_SESSION" bw unlock --check &>/dev/null; then
+			log_info "Bitwarden already unlocked"
+		else
+			log_info "Session invalid or locked. Unlocking Bitwarden vault..."
+			export BW_SESSION=$(bw unlock --raw)
+			log_success "Bitwarden vault unlocked"
+		fi
 	else
-		log_info "Unlocking Bitwarden vault..."
+		log_info "No session found. Unlocking Bitwarden vault..."
 		export BW_SESSION=$(bw unlock --raw)
 		log_success "Bitwarden vault unlocked"
 	fi
