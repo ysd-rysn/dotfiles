@@ -104,7 +104,7 @@ brew "hashicorp/tap/terraform"
 # Vault
 brew "hashicorp/tap/vault"
 # API development platform
-cask "apidog"
+#cask "apidog"
 # Chromium based browser
 cask "arc"
 # Securely stores and accesses AWS credentials in a development environment
@@ -134,9 +134,9 @@ cask "google-japanese-ime"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Keyboard customiser
-cask "karabiner-elements"
+#cask "karabiner-elements"
 # App to write, plan, collaborate, and get organised
-cask "notion"
+#cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Collaboration platform for API development
@@ -150,7 +150,7 @@ cask "slack"
 # Music streaming service
 cask "spotify"
 # Xcode Extension for reformatting Swift code
-cask "swiftformat-for-xcode"
+#cask "swiftformat-for-xcode"
 # Web browser focusing on security
 cask "tor-browser"
 # Open-source code editor
@@ -160,7 +160,7 @@ cask "warp"
 # Network protocol analyzer
 cask "wireshark-app"
 # Gecko based web browser
-cask "zen"
+#cask "zen"
 mas "Kindle", id: 302584613
 mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
