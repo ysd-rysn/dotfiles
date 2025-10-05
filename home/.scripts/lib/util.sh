@@ -141,6 +141,98 @@ check_bw_session() {
     return 0
 }
 
+# Ensure Bitwarden CLI is logged in (idempotent)
+bw_ensure_logged_in() {
+    if ! command -v bw &>/dev/null; then
+        log_error "Bitwarden CLI (bw) not found in PATH"
+        return 1
+    fi
+
+    # Check login status (capture exit code safely)
+    bw login --check 2>/dev/null
+    local login_status=$?
+
+    if [ $login_status -eq 0 ]; then
+        log_info "Already logged into Bitwarden"
+        return 0
+    else
+        log_info "Not logged in. Logging into Bitwarden..."
+        # bw login --raw will prompt for email and password interactively
+        local session
+        session=$(bw login --raw)
+        if [ $? -eq 0 ] && [ -n "$session" ]; then
+            export BW_SESSION="$session"
+            log_success "Bitwarden login successful"
+            return 0
+        else
+            log_error "Bitwarden login failed"
+            return 1
+        fi
+    fi
+}
+
+# Ensure Bitwarden vault is unlocked (idempotent)
+bw_ensure_unlocked() {
+    if ! command -v bw &>/dev/null; then
+        log_error "Bitwarden CLI (bw) not found in PATH"
+        return 1
+    fi
+
+    # If we have a session, check if it's still valid
+    if [ -n "${BW_SESSION:-}" ]; then
+        bw unlock --check 2>/dev/null
+        local unlock_status=$?
+
+        if [ $unlock_status -eq 0 ]; then
+            log_info "Bitwarden vault already unlocked"
+            return 0
+        fi
+    fi
+
+    # Need to unlock (will prompt for master password)
+    log_info "Unlocking Bitwarden vault..."
+    local session
+    session=$(bw unlock --raw)
+    if [ $? -eq 0 ] && [ -n "$session" ]; then
+        export BW_SESSION="$session"
+        log_success "Bitwarden vault unlocked"
+        return 0
+    else
+        log_error "Failed to unlock Bitwarden vault"
+        return 1
+    fi
+}
+
+# Get current Bitwarden session (ensures login + unlock)
+bw_get_session() {
+    bw_ensure_logged_in || return 1
+    bw_ensure_unlocked || return 1
+    echo "$BW_SESSION"
+}
+
+# Persist BW_SESSION to .zprofile (idempotent)
+persist_bw_session() {
+    local profile_file="${1:-$HOME/.zprofile}"
+
+    if [ -z "${BW_SESSION:-}" ]; then
+        log_warning "No BW_SESSION to persist"
+        return 1
+    fi
+
+    log_info "Persisting BW_SESSION to $profile_file..."
+
+    # Remove existing BW_SESSION lines
+    if [ -f "$profile_file" ]; then
+        grep -v "^export BW_SESSION=" "$profile_file" > "$profile_file.tmp" || true
+        mv "$profile_file.tmp" "$profile_file"
+    fi
+
+    # Add new BW_SESSION
+    echo "export BW_SESSION=\"$BW_SESSION\"" >> "$profile_file"
+    log_success "BW_SESSION persisted to $profile_file"
+    return 0
+}
+
 # Install Homebrew package if not already installed
 brew_install_if_missing() {
     local package="$1"

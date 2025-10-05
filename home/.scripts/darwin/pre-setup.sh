@@ -48,44 +48,13 @@ eval "$(brew shellenv)"
 # Bitwarden authentication
 log_info "Setting up Bitwarden authentication..."
 
-# Check if already logged in
-if bw login --check 2>/dev/null; then
-	log_info "Already logged into Bitwarden"
+# Ensure Bitwarden is logged in and unlocked
+# These functions handle all state checking and user prompts
+bw_ensure_logged_in || exit 1
+bw_ensure_unlocked || exit 1
 
-	# Check if we have a valid session
-	if [ -n "${BW_SESSION:-}" ]; then
-		# Test if session is still valid
-		if bw unlock --check 2>/dev/null; then
-			log_info "Bitwarden vault already unlocked"
-		else
-			# Session exists but vault is locked
-			log_info "Unlocking Bitwarden vault..."
-			export BW_SESSION=$(bw unlock --raw)
-			log_success "Bitwarden vault unlocked"
-		fi
-	else
-		# No session, need to unlock
-		log_info "No active session. Unlocking Bitwarden vault..."
-		export BW_SESSION=$(bw unlock --raw)
-		log_success "Bitwarden vault unlocked"
-	fi
-else
-	# Not logged in, need to login
-	log_info "Not logged in. Logging into Bitwarden..."
-	export BW_SESSION=$(bw login --raw)
-	log_success "Bitwarden login successful"
-fi
-
-# Persist BW_SESSION to shell profile for subsequent scripts
-# Remove any existing BW_SESSION lines to ensure idempotency
-if [ -f "$HOME/.zprofile" ]; then
-	grep -v "^export BW_SESSION=" "$HOME/.zprofile" > "$HOME/.zprofile.tmp" || true
-	mv "$HOME/.zprofile.tmp" "$HOME/.zprofile"
-fi
-
-# Add new BW_SESSION
-echo "export BW_SESSION=\"$BW_SESSION\"" >> "$HOME/.zprofile"
-log_info "BW_SESSION persisted to .zprofile"
+# Persist session to .zprofile for subsequent scripts
+persist_bw_session
 
 script_footer "macOS Pre-Setup"
 log_info "BW_SESSION is available for subsequent scripts"
