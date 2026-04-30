@@ -18,29 +18,53 @@ Host raspi5
     User ysd
     Port 22
     ForwardAgent yes
+    {{- if eq .chezmoi.os "darwin" }}
+    IdentityFile ~/.ssh/pub-keys/raspberry-pi-5.pub
+    IdentitiesOnly yes
+    {{- end }}
 
 Host raspi3b
     HostName raspi3b.lan
     User ysd
     Port 22
+    {{- if eq .chezmoi.os "darwin" }}
+    IdentityFile ~/.ssh/pub-keys/raspberry-pi-3b.pub
+    IdentitiesOnly yes
+    {{- end }}
 
 Host rtx1210
     HostName rtx1210.lan
     User ysd
     Port 22
+    {{- if eq .chezmoi.os "darwin" }}
+    IdentityFile ~/.ssh/pub-keys/rtx1210.pub
+    IdentitiesOnly yes
+    {{- end }}
 
 # Proxmox direct connection
 Host proxmox
     HostName proxmox.lan
     User root
     Port 22
+    {{- if eq .chezmoi.os "darwin" }}
+    IdentityFile ~/.ssh/pub-keys/proxmox.pub
+    IdentitiesOnly yes
+    {{- end }}
 
 Host dokploy-main
     HostName dokploy-main.lan
     User dokploy
     Port 22
+    {{- if eq .chezmoi.os "darwin" }}
+    IdentityFile ~/.ssh/pub-keys/dokploy-master.pub
+    IdentitiesOnly yes
+    {{- end }}
 
 Host dokploy-worker
     HostName dokploy-worker.lan
     User dokploy-worker
     Port 22
+    {{- if eq .chezmoi.os "darwin" }}
+    IdentityFile ~/.ssh/pub-keys/dokploy-worker.pub
+    IdentitiesOnly yes
+    {{- end }}
