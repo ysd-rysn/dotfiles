@@ -1,4 +1,4 @@
-tap "daytonaio/cli"
+#tap "daytonaio/cli"
 tap "hashicorp/tap"
 tap "jesseduffield/lazygit"
 # Run your GitHub Actions locally
@@ -88,7 +88,7 @@ brew "watchman"
 # Internet file retriever
 brew "wget"
 # JavaScript package manager
-brew "yarn"
+#brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Feature-rich command-line audio/video downloader
@@ -96,7 +96,7 @@ brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Daytona CLI
-brew "daytonaio/cli/daytona"
+#brew "daytonaio/cli/daytona"
 # Packer
 brew "hashicorp/tap/packer"
 # Terraform
@@ -106,7 +106,7 @@ brew "hashicorp/tap/vault"
 # API development platform
 #cask "apidog"
 # Chromium based browser
-cask "arc"
+#cask "arc"
 # Securely stores and accesses AWS credentials in a development environment
 cask "aws-vault-binary"
 # 3D model slicing software for 3D printers, maintained by Bambu Lab
@@ -140,7 +140,7 @@ cask "iterm2"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Collaboration platform for API development
-cask "postman"
+#cask "postman"
 # Imaging utility to install operating systems to a microSD card
 cask "raspberry-pi-imager"
 # Control your tools with a few keystrokes
